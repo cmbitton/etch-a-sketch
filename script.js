@@ -27,5 +27,9 @@ function cancelDraw(){
     }
 }
 createDrawingArea(16);
-window.addEventListener('mousedown', draw);
-window.addEventListener('mouseup', cancelDraw);
+window.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+    draw()});
+window.addEventListener('mouseup', (e) => {
+    e.preventDefault();
+    cancelDraw()});
