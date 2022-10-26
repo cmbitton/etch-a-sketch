@@ -4,21 +4,46 @@ body{
     padding: 0px;
     height: 100vh;
     width: 100%;
+    column-gap: 25px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #1b2f52c9;
 }
-
-.pixel {
-    box-sizing: border-box;
-    display: inline-block;
-    background-color: white;
-    margin: 0px;
-    padding: 0px;
+.game-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+.settings{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h2{
+    text-align: center;
+    color: white;
+}
+.color{
+    height: 75px;
+    width: 75px;
+    margin: 10px 0px;
 
+}
+.black{
+    background-color: black;
+}
+.white{
+    background-color: white;
+}
+.blue{
+    background-color: blue;
+}
+.selected{
+    border: 3px solid gold;
+}
 .drawing-board {
     box-sizing: border-box;
     line-height: 0px;
@@ -28,12 +53,16 @@ body{
     height: 512px;
     background-color: white;
 }
-.hov{
-    background-color: black;
-}
 h1{
     font-size: 50px;
     color: khaki;
+}
+.pixel {
+    box-sizing: border-box;
+    display: inline-block;
+    background-color: white;
+    margin: 0px;
+    padding: 0px;
 }
 .board-size-slider-container{
     margin-top: 10px;
@@ -50,6 +79,6 @@ label{
     font-size: 20px;
 }
 .board-size{
-    color: white;
+    color: #9affd6;
     font-size: 20px;
 }

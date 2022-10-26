@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,15 +9,25 @@
     <link href="./styles.css" rel="stylesheet">
     <title>Document</title>
 </head>
+
 <body>
-    <h1>Etch-A-Sketch</h1>
-    <div class="drawing-board">
+    <div class="settings">
+        <h2>Colors</h2>
+        <div class="color black selected" id="black"></div>
+        <div class="color white" id="white"></div>
+        <div class="color blue" id="blue"></div>
     </div>
-    <div class="board-size-slider-container">
-        <label for="board-size-slider">Board Size</label>
-        <input type="range" value="32" min="8" max="96" step="8" class="board-size-slider" id="board-size-slider">
-        <p class="board-size"></p>
+    <div class="game-container">
+        <h1>Etch-A-Sketch</h1>
+        <div class="drawing-board">
+        </div>
+        <div class="board-size-slider-container">
+            <label for="board-size-slider">Board Size</label>
+            <input type="range" value="32" min="8" max="96" step="8" class="board-size-slider" id="board-size-slider">
+            <p class="board-size"></p>
+        </div>
     </div>
-    
+
 </body>
+
 </html>

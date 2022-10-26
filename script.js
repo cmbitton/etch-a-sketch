@@ -1,4 +1,5 @@
 const boardSizeSlider = document.querySelector('.board-size-slider');
+
 function createDrawingArea(size) {
     const board = document.querySelector('.drawing-board');
     const boardSize = document.querySelector('.board-size');
@@ -16,12 +17,37 @@ function createDrawingArea(size) {
         board.append(row);
     }
 }
+function removeColor(){
+    const colors = document.querySelectorAll('.color');
+    for(const color of colors){
+        if(color.classList.contains('selected')){
+        color.classList.remove('selected');}
+    }
+}
+function chooseColor(){
+    const colors = document.querySelectorAll('.color');
+    for(const color of colors){
+        color.addEventListener('click', () =>{
+            removeColor();
+            color.classList.add('selected');
+        })
+    }
+}
 
+function getColor(){
+    const colors = document.querySelectorAll('.color');
+    for(const color of colors){
+        if (color.classList.contains('selected')){
+            return color.id;
+        }
+    }
+}
 function draw(){
     const pixels = document.querySelectorAll('.pixel');
+    const color = getColor();
     for(const pixel of pixels){
         pixel.addEventListener('mouseover', () => {
-            pixel.classList.add('hov');
+            pixel.style.backgroundColor = color;
         })
     }
 }
@@ -35,16 +61,23 @@ function cancelDraw(){
 window.addEventListener('mousedown', (e) => {
     if (e.target.classList.contains('pixel')) {
         e.preventDefault();
-        e.target.classList.add('hov');
-        draw()
+        const color = getColor();
+        e.target.style.backgroundColor = color;
+        draw();
     }
 });
+
 window.addEventListener('mouseup', (e) => {
     e.preventDefault();
     cancelDraw()
 });
-createDrawingArea(64);
+
+
 
 boardSizeSlider.addEventListener('input', () => {
     createDrawingArea(boardSizeSlider.value)
 })
+
+
+createDrawingArea(32);
+chooseColor();
