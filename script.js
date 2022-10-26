@@ -1,11 +1,16 @@
+const boardSizeSlider = document.querySelector('.board-size-slider');
 function createDrawingArea(size) {
     const board = document.querySelector('.drawing-board');
+    const boardSize = document.querySelector('.board-size');
+    boardSize.textContent = `${boardSizeSlider.value} x ${boardSizeSlider.value} pixels`;
+    board.textContent = '';
     for (let i = 0; i < size; i++) {
         const row = document.createElement('div');
         for (let j = 0; j < size; j++) {
             const pixel = document.createElement('div');
-            console.log(pixel);
             pixel.classList.add('pixel');
+            pixel.style.height = `${(board.offsetHeight) / size}px`
+            pixel.style.width = `${(board.offsetWidth) / size}px`
             row.append(pixel);
         }
         board.append(row);
@@ -16,7 +21,7 @@ function draw(){
     const pixels = document.querySelectorAll('.pixel');
     for(const pixel of pixels){
         pixel.addEventListener('mouseover', () => {
-            pixel.style.backgroundColor = 'white';
+            pixel.classList.add('hov');
         })
     }
 }
@@ -26,10 +31,20 @@ function cancelDraw(){
         pixel.outerHTML = pixel.outerHTML;
     }
 }
-createDrawingArea(16);
+
 window.addEventListener('mousedown', (e) => {
-    e.preventDefault();
-    draw()});
+    if (e.target.classList.contains('pixel')) {
+        e.preventDefault();
+        e.target.classList.add('hov');
+        draw()
+    }
+});
 window.addEventListener('mouseup', (e) => {
     e.preventDefault();
-    cancelDraw()});
+    cancelDraw()
+});
+createDrawingArea(64);
+
+boardSizeSlider.addEventListener('input', () => {
+    createDrawingArea(boardSizeSlider.value)
+})
