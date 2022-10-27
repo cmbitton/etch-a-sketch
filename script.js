@@ -58,6 +58,7 @@ function cancelDraw(){
     }
 }
 
+
 window.addEventListener('mousedown', (e) => {
     if (e.target.classList.contains('pixel')) {
         e.preventDefault();
@@ -72,6 +73,9 @@ window.addEventListener('mouseup', (e) => {
     cancelDraw()
 });
 
+document.querySelector('.clear-board').addEventListener('click', () => {
+    createDrawingArea(boardSizeSlider.value);
+})
 
 
 boardSizeSlider.addEventListener('input', () => {
